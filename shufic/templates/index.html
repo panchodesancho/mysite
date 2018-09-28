@@ -1,0 +1,16 @@
+{% extends "header.html" %}
+
+{% block Eminem %}
+        {% for vid in video %}
+            <iframe width="853" height="480" src={{ vid.video_url }} frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            <br>
+            <a href="/Eminem/onevideo/{{ vid.id }}" >{{ vid.video_title }}</a><br>
+            {{ vid.video_text }}<br>
+            {{ vid.video_likes }}<br><br>
+            {% for com in vid.video_comment %}
+                {{ com }}<br>
+            {% endfor %}
+        {% endfor %}
+{% endblock %}
+
+

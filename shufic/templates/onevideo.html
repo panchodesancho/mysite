@@ -1,0 +1,20 @@
+{% extends "header.html" %}
+{% load staticfiles %}
+{% block onevideo %}
+
+<iframe width="853" height="480" src={{ video.Video_url }} frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<br>
+{{ video.Video_title }}<br>
+{{ video.Video_text }}<br>
+<img src="{% static 'Like.jpg' %}" name="{{ video.id }}" id="like" width="100px" height="60px"><H1 id="count">{{ video.Video_likes }}</H1><br><br><br>
+
+    {% for com in comments %}
+        {{ com.Comment_text }}<br>
+    {% endfor %}
+{% if username %}
+    <form action="/Eminem/addcomment/{{ video.id }}/" method="post">{% csrf_token %} {{ form }}
+        <input type="submit" class="button" value="Добавить">
+
+</form>
+{% endif %}
+{% endblock %}
